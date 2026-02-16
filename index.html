@@ -1,41 +1,69 @@
-// User-input based arithmetic operations using switch case
-
-let num1 = parseFloat(prompt("Enter the first number:"));
-let num2 = parseFloat(prompt("Enter the second number:"));
-let operator = prompt("Enter operator (+, -, *, /, %):");
-
-let result;
-
-switch (operator) {
-    case "+":
-        result = num1 + num2;
-        alert(`Result: ${num1} + ${num2} = ${result}`);
-        break;
-
-    case "-":
-        result = num1 - num2;
-        alert(`Result: ${num1} - ${num2} = ${result}`);
-        break;
-
-    case "*":
-        result = num1 * num2;
-        alert(`Result: ${num1} * ${num2} = ${result}`);
-        break;
-
-    case "/":
-        if (num2 !== 0) {
-            result = num1 / num2;
-            alert(`Result: ${num1} / ${num2} = ${result}`);
-        } else {
-            alert("Error: Division by zero is not allowed");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arithmetic Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        break;
+        .calculator {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, select, button {
+            width: 100%;
+            margin: 8px 0;
+            padding: 8px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
 
-    case "%":
-        result = num1 % num2;
-        alert(`Result: ${num1} % ${num2} = ${result}`);
-        break;
+<div class="calculator">
+    <h2>Calculator</h2>
 
-    default:
-        alert("Invalid operator! Please use +, -, *, /, or %");
-}
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <select id="operator">
+        <option value="">Select Operation</option>
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+        <option value="%">Modulus (%)</option>
+    </select>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculate() {
+    let num1 = parseFloat(document.getElementById("num1").value);
+    let num2 = parseFloat(document.getElementById("num2").value);
+    let operator = document.getElementById("operator").value;
+    let result;
+
+    if (isNaN(num1) || isNaN(num2)) {
+        document.getElementById("result").innerText = "Please enter valid numbers";
+        return;
+    }
+
+    switc
