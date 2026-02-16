@@ -66,4 +66,34 @@ function calculate() {
         return;
     }
 
-    switc
+    switch (operator) {
+        case "+":
+            result = num1 + num2;
+            break;
+        case "-":
+            result = num1 - num2;
+            break;
+        case "*":
+            result = num1 * num2;
+            break;
+        case "/":
+            if (num2 === 0) {
+                document.getElementById("result").innerText = "Division by zero not allowed";
+                return;
+            }
+            result = num1 / num2;
+            break;
+        case "%":
+            result = num1 % num2;
+            break;
+        default:
+            document.getElementById("result").innerText = "Please select an operator";
+            return;
+    }
+
+    document.getElementById("result").innerText = "Result: " + result;
+}
+</script>
+
+</body>
+</html>
